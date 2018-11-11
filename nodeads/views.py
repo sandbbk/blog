@@ -48,7 +48,7 @@ def create_el(request, pk):
             element.group = Group.objects.get(pk=pk)
             element.created_date = timezone.now()
             element.save()
-            return redirect('group_detail', pk=pk, num_page=1)
+            return redirect('group_detail', pk=pk)
     else:
         if request.user.is_authenticated:
             form = ElementForm()

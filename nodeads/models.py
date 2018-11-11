@@ -6,7 +6,7 @@ from django.conf import settings
 
 class Group(MPTTModel):
     parent = TreeForeignKey('self', null=True, max_length=64, verbose_name='Parent', blank=True, related_name='children', db_index=True)
-    icon = models.ImageField(upload_to=settings.MEDIA_ROOT, verbose_name=u'Photo', help_text='jpg/png - file')
+    icon = models.ImageField(upload_to='', verbose_name=u'Photo', help_text='jpg/png - file')
     name = models.CharField(max_length=64)
     description = models.TextField(max_length=512, blank=True)
 
@@ -26,7 +26,7 @@ class Group(MPTTModel):
 
 class Element(models.Model):
     group = models.ForeignKey(Group, null=True, max_length=64, verbose_name='Group', db_index=True, related_name='relement')
-    icon = models.ImageField(upload_to=settings.MEDIA_ROOT, verbose_name=u'Photo', help_text='jpg/png - file')
+    icon = models.ImageField(upload_to='', verbose_name=u'Photo', help_text='jpg/png - file')
     name = models.CharField(max_length=64)
     description = models.TextField(max_length=512)
     created_date = models.DateTimeField(default = timezone.now())
