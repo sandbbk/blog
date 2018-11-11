@@ -16,7 +16,7 @@ def group_detail(request, pk):
     group = groups.get(pk=pk)
     group_childs = group.get_children()
     elements_gr = Element.objects.filter(group__pk=pk)
-    elements = elements_gr.filter(is_modered='true')
+    elements = elements_gr.filter(is_modered='true').order_by('name')
     this_page = Paginator(elements, 2)
     num_page = request.GET.get('page')
     try:
