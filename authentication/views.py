@@ -17,7 +17,7 @@ def log_in(request):
         if user is not None and user.is_active:
             login(request, user)
             next = request.GET.get('next')
-            if next in ('/auth/register', '/auth/login'):
+            if next in ('/auth/register', '/auth/login') or next is None:
                 return redirect('/nodeads/')
             elif next:
                 return redirect(next)
