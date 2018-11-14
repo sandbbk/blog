@@ -38,9 +38,8 @@ def register(request):
         if form.is_valid():
             form.save()
         next = request.GET.get('next')
-        if next in ('/auth/register', '/auth/login'):
+        if next in ('/auth/register', '/auth/login') or next is None:
             return redirect('/nodeads/')
         elif next:
             return redirect(next)
-        else:
-            return redirect('/nodeads/')
+        
